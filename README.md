@@ -326,22 +326,3 @@ menu sessions, and the ring engine (ring, snooze, max snoozes, auto-stop, late s
 simultaneous alarms, live reload).
 
 Requirements and design notes are in [docs/SPEC.md](docs/SPEC.md).
-
-## Troubleshooting
-
-| Problem | What to try |
-|---------|-------------|
-| Nothing rings | Alarms only ring while ring mode (option 7) is running; check the alarm is enabled in option 4 |
-| No sound | Use option 12; check the volume, or pick a `.wav` in Settings. The terminal bell may be muted by your terminal |
-| Countdown prints a new line each second | Make the terminal wider or try Windows Terminal; the line is trimmed to the terminal width |
-| Keys do nothing in ring mode | The terminal must be interactive (not piped input) |
-| "unreadable" warning at start | The file was corrupt and moved to `.bak`; restore it by hand if needed |
-| Alarm shows `Missed` | It came due while ring mode was not running (past the grace window) or was not acknowledged in time |
-
-## Limitations
-
-- No background service: keep ring mode running in a terminal (or start it with your OS
-  scheduler) for alarms to ring.
-- Snooze state is not saved across restarts.
-- One timezone (the system's local time); no natural-language input.
-- Only `.wav` files for custom sounds.
